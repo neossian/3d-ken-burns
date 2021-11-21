@@ -1,4 +1,7 @@
 # 3d-ken-burns
+Updates to the 3d-ken-burns to add controls for size and frame rate zoom amount, shift amount
+
+# 3d-ken-burns
 This is a reference implementation of 3D Ken Burns Effect from a Single Image [1] using PyTorch. Given a single input image, it animates this still image with a virtual camera scan and zoom subject to motion parallax. Should you be making use of our work, please cite our paper [1].
 
 <a href="https://arxiv.org/abs/1909.05483" rel="Paper"><img src="http://content.sniklaus.com/kenburns/paper.jpg" alt="Paper" width="100%"></a>
