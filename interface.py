@@ -195,13 +195,13 @@ def get_result():
 	os.makedirs(strTempdir + '/')
 
 	npyKenburns = process_kenburns({
-		'fltSteps': numpy.linspace(0.0, 1.0, 75).tolist(),
+		'fltSteps': numpy.linspace(0.0, 1.0, 120).tolist(),
 		'objFrom': objPlayback['objFrom'],
 		'objTo': objPlayback['objTo'],
 		'boolInpaint': True
 	})
 
-	moviepy.editor.ImageSequenceClip(sequence=[ npyFrame[:, :, ::-1] for npyFrame in npyKenburns + list(reversed(npyKenburns))[1:] ], fps=25).write_videofile(strTempdir + '/kenburns.mp4')
+	moviepy.editor.ImageSequenceClip(sequence=[ npyFrame[:, :, ::-1] for npyFrame in npyKenburns, fps=30).write_videofile(strTempdir + '/kenburns.mp4')
 
 	objKenburns = io.BytesIO(open(strTempdir + '/kenburns.mp4', 'rb').read())
 
