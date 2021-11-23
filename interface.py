@@ -201,7 +201,7 @@ def get_result():
 		'boolInpaint': True
 	})
 
-	moviepy.editor.ImageSequenceClip(sequence=[ npyFrame[:, :, ::-1] for npyFrame in npyKenburns, fps=30).write_videofile(strTempdir + '/kenburns.mp4')
+	moviepy.editor.ImageSequenceClip(sequence=[ npyFrame[:, :, ::-1] for npyFrame in npyKenburns], fps=30).write_videofile(strTempdir + '/kenburns.mp4')
 
 	objKenburns = io.BytesIO(open(strTempdir + '/kenburns.mp4', 'rb').read())
 
