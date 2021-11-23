@@ -54,12 +54,19 @@ arguments_strIn = './images/doublestrike.jpg'
 arguments_strOut = './autozoom.mp4'
 arguments_size = 1024
 argumnets_fps = 30
+arguments_zoom = 1.3
+argument_poihorizontal = 0
+argument_poivertical = 0
 
 for strOption, strArgument in getopt.getopt(sys.argv[1:], '', [ strParameter[2:] + '=' for strParameter in sys.argv[1::2] ])[0]:
 	if strOption == '--in' and strArgument != '': arguments_strIn = strArgument # path to the input image
 	if strOption == '--out' and strArgument != '': arguments_strOut = strArgument # path to where the output should be stored
 	if strOption == '--size' and strArgument != '': arguments_size = int(strArgument) #Size of the image
-	if strOption == '--fps' and strArgument != '': arguments_fps = int(strArgument) #Size of the image
+	if strOption == '--fps' and strArgument != '': arguments_fps = int(strArgument) #FrameRateOfOutput
+	if strOption == '--zoom' and strArgument != '': arguments_zoom = float(strArgument) #Zoom amount
+	if strOption == '--poih' and strArgument != '': argument_poihorizontal = float(strArgument) #Zoom amount
+	if strOption == '--poiv' and strArgument != '': argument_poivertical = float(strArgument) #Zoom amount		
+		
 # end
 
 ##########################################################
@@ -85,7 +92,20 @@ if __name__ == '__main__':
 		'intCropWidth': int(math.floor(0.97 * intWidth)),
 		'intCropHeight': int(math.floor(0.97 * intHeight))
 	}
-
+	
+	targetWidth= int(round(objFrom.intCropWidth / arguments_zoom))
+	targetHeight= int(round(objFrom.intCropHeight / arguments_zoom))
+	targetCenterU = objFrom.fltCenterU + (argument_poihorizontal * objFrom.fltCenterU)
+	targetCenterV = objFrom.fltCenterU + (argument_poivertical * objFrom.fltCenterV)
+	if (targetCenterU +targetWidth)
+	
+	objTo = {
+		'fltCenterU': (intWidth / 2.0) + (argument_poihorizontal * ),
+		'fltCenterV': (intHeight / 2.0),
+		'intCropWidth': targetWidth,
+		'intCropHeight': targetHeight
+	}
+	
 	objTo = process_autozoom({
 		'fltShift': 20,
 		'fltZoom': 1.5,
