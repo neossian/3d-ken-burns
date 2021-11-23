@@ -86,12 +86,12 @@ if __name__ == '__main__':
 
 	objTo = process_autozoom({
 		'fltShift': 20,
-		'fltZoom': 1.8,
+		'fltZoom': 1.5,
 		'objFrom': objFrom
 	})
 
 	npyResult = process_kenburns({
-		'fltSteps': numpy.linspace(0.0, 1.0, 30).tolist(),
+		'fltSteps': numpy.linspace(0.0, 1.0, 120).tolist(),
 		'objFrom': objFrom,
 		'objTo': objTo,
 		'boolInpaint': True
