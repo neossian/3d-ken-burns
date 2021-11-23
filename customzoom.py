@@ -97,21 +97,19 @@ if __name__ == '__main__':
 	targetHeight= int(round(objFrom.intCropHeight / arguments_zoom))
 	targetCenterU = objFrom.fltCenterU + (argument_poihorizontal * objFrom.fltCenterU)
 	targetCenterV = objFrom.fltCenterU + (argument_poivertical * objFrom.fltCenterV)
-	if (targetCenterU +targetWidth)
-	
+	if ((targetCenterU +(targetWidth/2))>intWidth): targetCenterU = intWidth - (targetWidth/2) - 2		
+	if ((targetCenterU +targetWidth)<0): targetCenterU = targetWidth/2 + 2		
+	if ((targetCenterV + targetHeight)<0):targetCenterV = targetHeight/2 + 2		
+	if ((targetCenterV +(targetHeight/2))>intHeight): targetCenterV = intHeight - (targetHeight/2) - 2	
+		
+		
 	objTo = {
-		'fltCenterU': (intWidth / 2.0) + (argument_poihorizontal * ),
-		'fltCenterV': (intHeight / 2.0),
+		'fltCenterU': targetCenterU,
+		'fltCenterV': targetCenterV ,
 		'intCropWidth': targetWidth,
 		'intCropHeight': targetHeight
-	}
+	}	
 	
-	objTo = process_autozoom({
-		'fltShift': 20,
-		'fltZoom': 1.5,
-		'objFrom': objFrom
-	})
-
 	npyResult = process_kenburns({
 		'fltSteps': numpy.linspace(0.0, 1.0, 120).tolist(),
 		'objFrom': objFrom,
