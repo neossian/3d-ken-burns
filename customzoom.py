@@ -57,6 +57,7 @@ argumnets_fps = 30
 arguments_zoom = 1.3
 argument_poihorizontal = 0
 argument_poivertical = 0
+argument_duration = 120
 
 for strOption, strArgument in getopt.getopt(sys.argv[1:], '', [ strParameter[2:] + '=' for strParameter in sys.argv[1::2] ])[0]:
 	if strOption == '--in' and strArgument != '': arguments_strIn = strArgument # path to the input image
@@ -66,6 +67,7 @@ for strOption, strArgument in getopt.getopt(sys.argv[1:], '', [ strParameter[2:]
 	if strOption == '--zoom' and strArgument != '': arguments_zoom = float(strArgument) #Zoom amount
 	if strOption == '--poih' and strArgument != '': argument_poihorizontal = float(strArgument) #location of zoom target horiz percent -1 to +1
 	if strOption == '--poiv' and strArgument != '': argument_poivertical = float(strArgument) #location of zoom target vert percent -1 to +1
+	if strOption == '--duration' and strArgument != '': argument_duration = int(strArgument) #location of zoom target vert percent -1 to +1
 		
 # end
 
@@ -111,7 +113,7 @@ if __name__ == '__main__':
 	}	
 	
 	npyResult = process_kenburns({
-		'fltSteps': numpy.linspace(0.0, 1.0, 120).tolist(),
+		'fltSteps': numpy.linspace(0.0, 1.0, argument_duration).tolist(),
 		'objFrom': objFrom,
 		'objTo': objTo,
 		'boolInpaint': True
