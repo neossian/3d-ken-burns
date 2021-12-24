@@ -93,10 +93,10 @@ if __name__ == '__main__':
 		'intCropHeight': int(math.floor(0.97 * intHeight))
 	}
 	
-	targetWidth= int(round(objFrom.intCropWidth / arguments_zoom))
-	targetHeight= int(round(objFrom.intCropHeight / arguments_zoom))
-	targetCenterU = objFrom.fltCenterU + (argument_poihorizontal * objFrom.intCropWidth /2)
-	targetCenterV = objFrom.fltCenterV + (argument_poivertical * objFrom.intCropHeight /2)
+	targetWidth= int(round(objFrom['intCropWidth'] / arguments_zoom))
+	targetHeight= int(round(objFrom['intCropHeight'] / arguments_zoom))
+	targetCenterU = objFrom.fltCenterU + (argument_poihorizontal * objFrom['intCropWidth'] /2)
+	targetCenterV = objFrom.fltCenterV + (argument_poivertical * objFrom['intCropHeight'] /2)
 	if ((targetCenterU +(targetWidth/2))>intWidth): targetCenterU = intWidth - (targetWidth/2) - 2		
 	if ((targetCenterU +targetWidth)<0): targetCenterU = targetWidth/2 + 2		
 	if ((targetCenterV + targetHeight)<0):targetCenterV = targetHeight/2 + 2		
