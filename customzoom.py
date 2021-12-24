@@ -64,8 +64,8 @@ for strOption, strArgument in getopt.getopt(sys.argv[1:], '', [ strParameter[2:]
 	if strOption == '--size' and strArgument != '': arguments_size = int(strArgument) #Size of the image
 	if strOption == '--fps' and strArgument != '': arguments_fps = int(strArgument) #FrameRateOfOutput
 	if strOption == '--zoom' and strArgument != '': arguments_zoom = float(strArgument) #Zoom amount
-	if strOption == '--poih' and strArgument != '': argument_poihorizontal = float(strArgument) #Zoom amount
-	if strOption == '--poiv' and strArgument != '': argument_poivertical = float(strArgument) #Zoom amount		
+	if strOption == '--poih' and strArgument != '': argument_poihorizontal = float(strArgument) #location of zoom target horiz percent -1 to +1
+	if strOption == '--poiv' and strArgument != '': argument_poivertical = float(strArgument) #location of zoom target vert percent -1 to +1
 		
 # end
 
@@ -95,8 +95,8 @@ if __name__ == '__main__':
 	
 	targetWidth= int(round(objFrom.intCropWidth / arguments_zoom))
 	targetHeight= int(round(objFrom.intCropHeight / arguments_zoom))
-	targetCenterU = objFrom.fltCenterU + (argument_poihorizontal * objFrom.fltCenterU)
-	targetCenterV = objFrom.fltCenterU + (argument_poivertical * objFrom.fltCenterV)
+	targetCenterU = objFrom.fltCenterU + (argument_poihorizontal * objFrom.intCropWidth /2)
+	targetCenterV = objFrom.fltCenterV + (argument_poivertical * objFrom.intCropHeight /2)
 	if ((targetCenterU +(targetWidth/2))>intWidth): targetCenterU = intWidth - (targetWidth/2) - 2		
 	if ((targetCenterU +targetWidth)<0): targetCenterU = targetWidth/2 + 2		
 	if ((targetCenterV + targetHeight)<0):targetCenterV = targetHeight/2 + 2		
